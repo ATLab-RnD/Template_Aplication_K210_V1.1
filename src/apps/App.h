@@ -350,7 +350,7 @@ void Application::Infor()
   Serial.printf_P(Name_Application);
   Serial.printf_P(" : ");
   Serial.printf_P(State_Application_String());
-  Serial.printf_P(" -- Free heap size %d.\n",ESP.getFreeHeap());
+  Serial.printf_P(" -- Free heap size %.1f.\n",(float)get_free_heap_size());
 
 }
 #endif

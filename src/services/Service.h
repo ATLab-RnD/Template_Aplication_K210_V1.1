@@ -235,11 +235,11 @@ void Service::End()
  */
 void Service::Infor()
 {
-  Serial.printf_P("ID: %d -- ",ID_Service);
+  Serial.printf_P("   ID: %d -- ",ID_Service);
   Serial.printf_P(Name_Service);
   Serial.printf_P(" : ");
   Serial.printf_P(State_Service_String());
-  Serial.printf_P(" -- Free heap size %d.\n",ESP.getFreeHeap());
+  Serial.printf_P(" -- Free heap size %.1f.\n",(float)get_free_heap_size());
 
 }
 #endif
