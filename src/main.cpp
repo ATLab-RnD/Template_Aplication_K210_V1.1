@@ -29,7 +29,10 @@ void atEXHMI_Application(void *parameter)
   }
 }
 
+int core1_function(void *ctx);
 void setup() {
+  register_core1(core1_function,NULL);
+
   // put your setup code here, to run once:
   // atABC.Debug();
   atEXHMI.Debug();
@@ -39,11 +42,13 @@ void setup() {
     "atABC_Application",  // name task
     10000,  //stack size of task
     NULL, 
-    3,
+    1,
     &Task_atABC
   );
-  xTaskCreateAtProcessor(
-    1,
+}
+int core1_function(void *ctx)
+{
+  xTaskCreate(
     atEXHMI_Application,  //task function
     "atEXHMI_Application",  // name task
     10000,  //stack size of task
@@ -52,8 +57,8 @@ void setup() {
     &Task_atEXHMI
   );
   vTaskStartScheduler();
+  while(1);
 }
-
 void loop() {
   // put your main code here, to run repeatedly:
 }  
