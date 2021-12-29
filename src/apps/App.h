@@ -350,7 +350,7 @@ void Application::Infor()
   Serial.printf_P(Name_Application);
   Serial.printf_P(" : ");
   Serial.printf_P(State_Application_String());
-  Serial.printf_P(" -- Free heap size %.1f.\n",(float)get_free_heap_size());
-
+  Serial.printf_P(" -- Free heap size %lu",get_free_heap_size());
+  Serial.printf_P(" -- Core ID:  %lu.\n",current_coreid());
 }
 #endif
